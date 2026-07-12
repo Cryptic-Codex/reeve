@@ -1,5 +1,6 @@
-// Copyright (C) 2026 Cryptic Codex LLC
+// Copyright (C) 2026 COPYRIGHT_HOLDER
 // SPDX-License-Identifier: GPL-3.0-or-later
+
 package cli
 
 import (
@@ -13,7 +14,8 @@ import (
 
 const menuHelp = `reeve — referee tools
 
-  roll <dice>   roll dice notation, e.g. roll 2d6+1
+  roll <dice>          roll dice notation, e.g. roll 2d6+1
+  hex <terrain> [n]    generate wilderness hexes from current terrain
   help          show this menu
   quit          leave the table (also: q, exit)
 
@@ -50,6 +52,13 @@ func RunMenu(in io.Reader, out io.Writer) error {
 
 		case "roll":
 			doRoll(out, rest)
+
+		case "hex":
+			if rest == "" {
+				fmt.Fprintln(out, "usage: hex <terrain> [count], e.g. hex forest 6")
+				continue
+			}
+			doHex(out, strings.Fields(rest))
 
 		default:
 			// convenience: bare "3d6+1" is treated as a roll

@@ -1,5 +1,6 @@
-// Copyright (C) 2026 Cryptic Codex LLC
+// Copyright (C) 2026 COPYRIGHT_HOLDER
 // SPDX-License-Identifier: GPL-3.0-or-later
+
 package cli
 
 import (
@@ -11,9 +12,10 @@ import (
 const usage = `reeve — referee tools for OSR games
 
 usage:
-  reeve                start the interactive menu
-  reeve roll <dice>    roll dice notation, e.g. reeve roll 2d6+1
-  reeve help           show this help`
+  reeve                      start the interactive menu
+  reeve roll <dice>          roll dice notation, e.g. reeve roll 2d6+1
+  reeve hex <terrain> [n]    generate wilderness hexes from current terrain
+  reeve help                 show this help`
 
 // Execute dispatches on os.Args. This is the seam cobra will later replace:
 // swap this file for a cobra root command and nothing else changes.
@@ -34,6 +36,13 @@ func Execute() {
 		}
 		// join so both `reeve roll 2d6+1` and `reeve roll 2d6 + 1` work
 		doRoll(os.Stdout, strings.Join(os.Args[2:], " "))
+
+	case "hex":
+		if len(os.Args) < 3 {
+			fmt.Fprintln(os.Stderr, "usage: reeve hex <terrain> [count], e.g. reeve hex plain 6")
+			os.Exit(2)
+		}
+		doHex(os.Stdout, os.Args[2:])
 
 	case "menu":
 		if err := RunMenu(os.Stdin, os.Stdout); err != nil {
