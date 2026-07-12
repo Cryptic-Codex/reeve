@@ -4,7 +4,8 @@ package cli
 
 import (
 	"fmt"
-	"reeve/dice"
+
+	"github.com/Cryptic-Codex/reeve/dice"
 
 	"github.com/spf13/cobra"
 )

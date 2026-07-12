@@ -1,6 +1,6 @@
 // Copyright (C) 2026 Cryptic Codex LLC
 // SPDX-License-Identifier: GPL-3.0-or-later
-module reeve
+module github.com/Cryptic-Codex/reeve
 
 go 1.26
 

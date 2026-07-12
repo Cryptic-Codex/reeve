@@ -8,7 +8,7 @@ import (
 	"io"
 	"strings"
 
-	"reeve/dice"
+	"github.com/Cryptic-Codex/reeve/dice"
 )
 
 const menuHelp = `reeve — referee tools
