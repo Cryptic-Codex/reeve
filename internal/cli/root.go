@@ -15,6 +15,7 @@ usage:
   reeve                      start the interactive menu
   reeve roll <dice>          roll dice notation, e.g. reeve roll 2d6+1
   reeve hex <terrain> [n]    generate wilderness hexes from current terrain
+  reeve char [race] [class]  roll a 3LBB OD&D character, e.g. reeve char elf
   reeve help                 show this help`
 
 // Execute dispatches on os.Args. This is the seam cobra will later replace:
@@ -43,6 +44,9 @@ func Execute() {
 			os.Exit(2)
 		}
 		doHex(os.Stdout, os.Args[2:])
+
+	case "char":
+		doChar(os.Stdout, os.Args[2:])
 
 	case "menu":
 		if err := RunMenu(os.Stdin, os.Stdout); err != nil {

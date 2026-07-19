@@ -16,6 +16,7 @@ const menuHelp = `reeve — referee tools
 
   roll <dice>          roll dice notation, e.g. roll 2d6+1
   hex <terrain> [n]    generate wilderness hexes from current terrain
+  char [race] [class]  roll a 3LBB OD&D character, e.g. char elf
   help          show this menu
   quit          leave the table (also: q, exit)
 
@@ -59,6 +60,9 @@ func RunMenu(in io.Reader, out io.Writer) error {
 				continue
 			}
 			doHex(out, strings.Fields(rest))
+
+		case "char":
+			doChar(out, strings.Fields(rest))
 
 		default:
 			// convenience: bare "3d6+1" is treated as a roll
