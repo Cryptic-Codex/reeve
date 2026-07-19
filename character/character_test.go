@@ -104,6 +104,74 @@ func TestParseClass(t *testing.T) {
 	}
 }
 
+func TestAbilityEffects(t *testing.T) {
+	if got := ConHPAdjustment(15); got != 1 {
+		t.Errorf("ConHPAdjustment(15) = %d, want 1", got)
+	}
+	if got := ConHPAdjustment(6); got != -1 {
+		t.Errorf("ConHPAdjustment(6) = %d, want -1", got)
+	}
+	if got := ConHPAdjustment(10); got != 0 {
+		t.Errorf("ConHPAdjustment(10) = %d, want 0", got)
+	}
+	if got := DexMissileAdjustment(13); got != 1 {
+		t.Errorf("DexMissileAdjustment(13) = %d, want 1", got)
+	}
+	if got := DexMissileAdjustment(8); got != -1 {
+		t.Errorf("DexMissileAdjustment(8) = %d, want -1", got)
+	}
+	if got := MaxHirelings(3); got != 1 {
+		t.Errorf("MaxHirelings(3) = %d, want 1", got)
+	}
+	if got := MaxHirelings(18); got != 12 {
+		t.Errorf("MaxHirelings(18) = %d, want 12", got)
+	}
+	if got := LoyaltyBase(18); got != 4 {
+		t.Errorf("LoyaltyBase(18) = %d, want 4", got)
+	}
+	if got := LoyaltyBase(10); got != 0 {
+		t.Errorf("LoyaltyBase(10) = %d, want 0", got)
+	}
+	if got := AdditionalLanguages(14); got != 4 {
+		t.Errorf("AdditionalLanguages(14) = %d, want 4", got)
+	}
+	if got := AdditionalLanguages(9); got != 0 {
+		t.Errorf("AdditionalLanguages(9) = %d, want 0", got)
+	}
+}
+
+func TestParseAlignment(t *testing.T) {
+	tests := map[string]Alignment{
+		"law": Law, "Lawful": Law,
+		"neutrality": Neutrality, "neutral": Neutrality,
+		"chaos": Chaos, "chaotic": Chaos,
+	}
+	for in, want := range tests {
+		if got, err := ParseAlignment(in); err != nil || got != want {
+			t.Errorf("ParseAlignment(%q) = %s, %v; want %s", in, got, err, want)
+		}
+	}
+	if _, err := ParseAlignment("lawful-good"); err == nil {
+		t.Error("ParseAlignment(lawful-good) should error")
+	}
+}
+
+func TestRollExtras(t *testing.T) {
+	g := NewSeeded(7)
+	for i := 0; i < 1000; i++ {
+		if hp := g.RollHP(3); hp < 1 {
+			t.Fatalf("RollHP never below 1, got %d", hp)
+		}
+		gold := g.RollGold()
+		if gold < 30 || gold > 180 || gold%10 != 0 {
+			t.Fatalf("RollGold out of range or not a multiple of 10: %d", gold)
+		}
+		if a := g.RollAlignment(); a < Law || a >= numAlignments {
+			t.Fatalf("RollAlignment out of range: %d", a)
+		}
+	}
+}
+
 // Rolling is random, so we test properties, not exact values.
 func TestRollScores(t *testing.T) {
 	g := NewSeeded(1)

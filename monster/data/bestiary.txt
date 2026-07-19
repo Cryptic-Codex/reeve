@@ -1,0 +1,112 @@
+# Bestiary bundled with reeve — a sample of 3LBB monsters (Monsters & Treasure).
+# Stats are approximate OD&D values; verify against your table's rules.
+#
+# Format (blank lines separate monsters; '#' begins a comment):
+#   monster: <name>
+#   hd: <hit dice>          e.g. 1, 1+1, 2-1, 1/2   (defaults: attacks 1, damage 1d6)
+#   ac: <descending AC>
+#   move: <movement>
+#   attacks: <n>
+#   damage: <dice>
+#   number: <dice>          number appearing
+#   lair: <percent>
+#   treasure: <letter>
+#   alignment: <Law|Neutrality|Chaos>
+#   notes: <text>
+
+monster: Kobold
+hd: 1/2
+ac: 7
+move: 6"
+number: 4d4
+lair: 50
+treasure: J
+alignment: Chaos
+notes: -1 to hit in full daylight.
+
+monster: Goblin
+hd: 1-1
+ac: 6
+move: 6"
+number: 2d4
+lair: 40
+treasure: C
+alignment: Chaos
+notes: -1 to hit in full daylight.
+
+monster: Orc
+hd: 1
+ac: 6
+move: 9"
+number: 2d4
+lair: 50
+treasure: D
+alignment: Chaos
+notes: Fight at a penalty in bright sunlight.
+
+monster: Hobgoblin
+hd: 1+1
+ac: 5
+move: 9"
+number: 1d6
+lair: 30
+treasure: D
+alignment: Chaos
+
+monster: Gnoll
+hd: 2
+ac: 5
+move: 9"
+number: 1d6
+lair: 30
+treasure: D
+alignment: Chaos
+
+monster: Skeleton
+hd: 1/2
+ac: 7
+move: 6"
+number: 3d6
+alignment: Chaos
+notes: Undead; immune to sleep and charm.
+
+monster: Zombie
+hd: 1
+ac: 8
+move: 6"
+number: 2d6
+alignment: Chaos
+notes: Undead; always strikes last.
+
+monster: Giant Rat
+hd: 1/2
+ac: 7
+move: 12"
+number: 5d6
+alignment: Neutrality
+notes: 5% chance of disease on a bite.
+
+monster: Wolf
+hd: 2+2
+ac: 7
+move: 18"
+number: 2d6
+alignment: Neutrality
+
+monster: Ogre
+hd: 4+1
+ac: 6
+move: 9"
+number: 1d6
+lair: 30
+treasure: C
+alignment: Chaos
+notes: Carries 1d6 x 100 gp.
+
+monster: Stirge
+hd: 1
+ac: 7
+move: 3"/18" fly
+number: 3d10
+alignment: Neutrality
+notes: On a hit it attaches and drains blood each round thereafter.

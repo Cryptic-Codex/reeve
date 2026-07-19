@@ -1,0 +1,37 @@
+# Tables bundled with reeve.
+#
+# Format:
+#   table: <name> <dice>          start a table, e.g. "table: reaction 2d6"
+#   <lo>[-<hi>]: <text>           a leaf entry
+#   <lo>[-<hi>]: @<othertable>    roll on another table instead
+#
+# Entry ranges must tile the dice's full span with no gaps or overlaps.
+
+table: reaction 2d6
+2: Hostile — attacks at once
+3-5: Unfriendly, likely to attack
+6-8: Uncertain, wary and watchful
+9-11: Indifferent, no immediate hostility
+12: Friendly, offers aid
+
+table: dressing d20
+1: A cold draft from an unseen source
+2: The distant, steady drip of water
+3: Scorch marks blacken one wall
+4: Scattered bones, picked clean
+5: A faded, indecipherable mural
+6: Pale fungus glows faintly in the corners
+7: Deep claw marks gouge the stone
+8: A broken weapon, rusted through
+9: The thick reek of decay
+10: Chittering that stops when you listen
+11: A scrap of torn, filthy cloth
+12: Old torch soot streaks the ceiling
+13: A cold campfire's grey ashes
+14: A single word scratched into the floor
+15: Loose flagstones shift underfoot
+16: A curtain of dust-heavy cobwebs
+17: The floor slopes almost imperceptibly
+18: A discarded, empty flask
+19: Droppings from something large
+20: An unnatural, listening silence
